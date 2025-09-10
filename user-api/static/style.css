@@ -1,0 +1,197 @@
+:root {
+    --primary: #0c436c;
+    --primary-dark: #718096;
+    --primary-light: #764ba2;
+    --secondary: #f093fb;
+    --accent: #4facfe;
+    --text-primary: rgba(0, 0, 0, 0);
+    --text-secondary: #718096;
+    --background: #f7fafc;
+    --surface: rgb(255, 255, 255);
+    --border: rgba(102, 126, 234, 0.4);
+    --success: #48bb78;
+    --error: #f56565;
+    --transition-speed: 0.3s;
+    --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: url('https://images.pexels.com/photos/30756265/pexels-photo-30756265.jpeg');
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: linear-gradient(#b76a6a, #07538c, #5f318d,#0c436c);
+    padding: 40px 30px;
+    border-radius: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    width:500px;
+    height:1000px;
+    max-height: 500px ;
+    max-width: 500px;  /* Increased max-width for better comfort */
+    text-align: center;
+    position: relative;
+}
+
+/* Message Box */
+.message {
+    padding: 15px 20px;
+    margin-bottom: 24px;
+    border-radius: 8px; /* Reduced border-radius for a modern look */
+    font-weight: 600;
+    font-size: 14px;
+    transition: all var(--transition-speed) var(--transition-ease);
+}
+
+/* Success & Error Messages */
+.message.success {
+    background: rgba(72, 187, 120, 0.15);
+    color: var(--success);
+    border: 2px solid rgba(72, 187, 120, 0.4);
+}
+
+.message.error {
+    background: rgba(245, 101, 101, 0.15);
+    color: var(--error);
+    border: 2px solid rgba(245, 101, 101, 0.4);
+}
+
+/* Toggle Buttons */
+.form-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: 2px solid var(--primary);
+    padding: 10px 30px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--transition-ease);
+    user-select: none;
+}
+
+.toggle-btn:hover {
+    background: var(--primary-light);
+    color: white;
+}
+
+.toggle-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Forms */
+.forms {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.form {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.form.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+/* Form Titles */
+.auth-form h2 {
+    margin-bottom: 24px;
+    color: black;
+    font-weight: 700;
+    font-size: 26px;
+}
+
+/* Input Fields */
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-size: 16px;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.8);
+    transition: border-color var(--transition-speed) var(--transition-ease);
+    outline: none;
+}
+
+.auth-form input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.auth-form input:focus {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--primary);
+}
+
+/* Buttons */
+.auth-form button {
+    width: 100%;
+    height:auto;
+    padding: 16px;
+    background: linear-gradient(135deg, #718096,#667EEA4C);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+    transition: background var(--transition-speed) var(--transition-ease);
+}
+
+.auth-form button:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+        max-width: 100%;
+    }
+
+    .auth-form h2 {
+        font-size: 22px;
+    }
+
+    .auth-form input[type="text"],
+    .auth-form input[type="email"],
+    .auth-form input[type="password"],
+    .auth-form button {
+        padding: 14px;
+        font-size: 15px;
+    }
+}
